@@ -1,17 +1,18 @@
 import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Human implements Serializable {
+public class Human implements Comparable<Human> {
     private Human mather, father;
     private String name;
     private List<Human> children;
     private Gender gender;
     private LocalDate BirthDate, DeathDate;
+    private int age;
 
-
-    public Human(String name, Gender gender, LocalDate BirthDate, LocalDate DeathDate, Human mather, Human father) {
+    public Human(String name, Gender gender, LocalDate BirthDate, LocalDate DeathDate, Human mather, Human fathe) {
         this.name = name;
         this.gender = gender;
         this.BirthDate = BirthDate;
@@ -19,6 +20,10 @@ public class Human implements Serializable {
         this.mather = mather;
         this.father = father;
         this.children = new ArrayList<>();
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Override
@@ -63,6 +68,12 @@ public class Human implements Serializable {
         return father;
     }
 
+    public int getAge() {
+        int bd = BirthDate.getYear();
+        int now = LocalDate.now().getYear();
+        return now - bd;
+    }
+
     public Human getMather() {
         return mather;
     }
@@ -81,6 +92,11 @@ public class Human implements Serializable {
             }
         }
         return stringBuilder.toString();
+    }
+
+    @Override
+    public int compareTo(Human human) {
+        return name.compareTo(human.name);
     }
 }
 

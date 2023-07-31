@@ -7,8 +7,19 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+        Service service = new Service();
+        service.addHuman("Илья", Gender.Male, LocalDate.of(2005, 5, 27), null, null, null);
+        service.addHuman("Алексей", Gender.Male, LocalDate.of(1983,12,4), null, null, null);
+        service.addHuman("Савелий", Gender.Male, LocalDate.of(1992,11,15), null, null, null);
+
+        System.out.println(service.getInfo());
+        service.sortByName();
+        System.out.println(service.getInfo());
+        service.sortByAge();
+        System.out.println(service.getInfo());
+
+
 //        FamilyTree familytree = new FamilyTree();
-//        Human human = new Human("Андрей", Gender.Male, LocalDate.of(1990, 5, 31), null, null, null);
 //
 //        Human parent1 = new Human("Кристина", Gender.Female, LocalDate.of(1984,3, 27), null, null, null);
 //        Human parent2 = new Human("Алексей", Gender.Male, LocalDate.of(1983,12,4), null, null, null);
@@ -20,7 +31,6 @@ public class Main {
 //        Human child4 = new Human("Ваня", Gender.Male, LocalDate.of(2001, 8, 13), null, null, parent3);
 //        Human child5 = new Human("Миша", Gender.Male, LocalDate.of(2004, 1, 10), null, parent1, parent2);
 //
-//        familytree.addHuman(human);
 //        familytree.addHuman(parent1);
 //        familytree.addHuman(parent2);
 //        familytree.addHuman(parent3);
@@ -31,11 +41,11 @@ public class Main {
 //        familytree.addHuman(child5);
 //
 //        System.out.println(familytree);
-//
+
+        // FileHandler fileHandler = new FileHandler();
+        // fileHandler.save(familytree);
 //        FileHandler fileHandler = new FileHandler();
-//        fileHandler.save(familytree);
-        FileHandler fileHandler = new FileHandler();
-        FamilyTree familytree = fileHandler.load();
-        System.out.println(familytree);
+//        FamilyTree familytree = fileHandler.load();
+//        System.out.println(familytree);
     }
 }
